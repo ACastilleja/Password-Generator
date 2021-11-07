@@ -1,34 +1,4 @@
 // Assignment code here
-function getRandomLower() {
-  if(lowercase == 1){
-  return String.fromCharCode(Math.floor(Math.random()*26)+97);
-  }
-}
-function getRandomUpper() {
-  if(uppercase==1){
-  return String.fromCharCode(Math.floor(Math.random()*26)+65);
-  }
-}
-function getRandomNumber() {
-  if(number==1) {
-  return String.fromCharCode(Math.floor(Math.random()*10)+48);
-  }
-}
-function getRandomSymbol() {
-  if(symbol==1){
-  const symbols = '!@#$%^&*(){}[]=+/?<>'
-  return symbols[Math.floor(Math.random()*symbols.length)];
-  }
-}
-
-const randomFunc = {
-  rlower: getRandomLower,
-  rupper: getRandomUpper,
-  rnumber: getRandomNumber,
-  rsymbol: getRandomSymbol
-}
-
-
 
  var generatePassword = function() {
 
@@ -78,35 +48,47 @@ var symbol = 0;
 
 //password generation
 
-
-const passwordArr = [{uppercase},{lowercase},{number},{symbol}].filter(item=>Object.values(item)[0]);
-
-while (i=passwordArr.lenght,i<=length) {
-  
-}
-console.log (final);
- };
-
-//generating final password
-/*function generatingPassword(rlower,rupper,rnumber,rsymbol,length){
-  let finalpassword = '';
-  const typesCount = lower + upper+ number+symbol;
-  const typesArr=[{rlower},{rupper},{rnumber},{rsymbol}].filter(item=>Object.values(item)[0]);
-
-  if(typesCount===0){
-    return '';
+function getRandomLower() {
+  if(lowercase == 1){
+  return String.fromCharCode(Math.floor(Math.random()*26)+97);
   }
-  for(let i=0; i<length; i+=typesCount) {
-    typesArr.forEach(type => {
-      const FuncName=Object.keys(type)[0];
-      finalpassword+=randomFunc[funcName]();
-    });
-  }
-  const password=finalpassword.slice(0,length);
-  return password;
 }
-console.log (password);
- };*/
+function getRandomUpper() {
+  if(uppercase == 1){
+  return String.fromCharCode(Math.floor(Math.random()*26)+65);
+  }
+}
+function getRandomNumber() {
+  if(number == 1) {
+  return String.fromCharCode(Math.floor(Math.random()*10)+48);
+  }
+}
+function getRandomSymbol() {
+  if(symbol == 1){
+  const symbols = '!@#$%^&*(){}[]=+/?<>'
+  return symbols[Math.floor(Math.random()*symbols.length)];
+  }
+}
+var passwordArr = [];
+
+
+for (let i=0; i<length; i++){
+const rUpper = getRandomUpper();
+const rLower = getRandomLower();
+const rNumber = getRandomNumber();
+const rSymbol = getRandomSymbol();
+passwordArr.push(rUpper,rLower,rNumber,rSymbol);
+if (passwordArr.length>=length){
+  break;
+}
+//const passwordArr = [{rUpper},{rLower},{rNumber},{rSymbol}];
+
+}
+const password = passwordArr;
+return password;
+};
+
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -114,10 +96,10 @@ var generateBtn = document.querySelector("#generate");
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
+  
   var passwordText = document.querySelector("#password");
-
   passwordText.value = password;
-
+  
 }
 
 // Add event listener to generate button
