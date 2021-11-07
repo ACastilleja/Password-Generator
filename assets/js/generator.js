@@ -1,12 +1,5 @@
 // Assignment code here
 
-
-
-  
-
-
-
-
  var generatePassword = function() {
 
 //length prompt
@@ -77,6 +70,7 @@ function getRandomSymbol() {
   }
 }
 var passwordArr = [];
+
 
 for (let i=0; i<length; i++){
 const rUpper = getRandomUpper();
