@@ -1,32 +1,9 @@
 // Assignment code here
-function getRandomLower() {
-  if(lowercase == 1){
-  return String.fromCharCode(Math.floor(Math.random()*26)+97);
-  }
-}
-function getRandomUpper() {
-  if(uppercase==1){
-  return String.fromCharCode(Math.floor(Math.random()*26)+65);
-  }
-}
-function getRandomNumber() {
-  if(number==1) {
-  return String.fromCharCode(Math.floor(Math.random()*10)+48);
-  }
-}
-function getRandomSymbol() {
-  if(symbol==1){
-  const symbols = '!@#$%^&*(){}[]=+/?<>'
-  return symbols[Math.floor(Math.random()*symbols.length)];
-  }
-}
 
-const randomFunc = {
-  rlower: getRandomLower,
-  rupper: getRandomUpper,
-  rnumber: getRandomNumber,
-  rsymbol: getRandomSymbol
-}
+
+
+  
+
 
 
 
@@ -78,13 +55,37 @@ var symbol = 0;
 
 //password generation
 
-
-const passwordArr = [{uppercase},{lowercase},{number},{symbol}].filter(item=>Object.values(item)[0]);
-
-while (i=passwordArr.lenght,i<=length) {
-  
+function getRandomLower() {
+  if(lowercase == 1){
+  return String.fromCharCode(Math.floor(Math.random()*26)+97);
+  }
 }
-console.log (final);
+function getRandomUpper() {
+  if(uppercase == 1){
+  return String.fromCharCode(Math.floor(Math.random()*26)+65);
+  }
+}
+function getRandomNumber() {
+  if(number == 1) {
+  return String.fromCharCode(Math.floor(Math.random()*10)+48);
+  }
+}
+function getRandomSymbol() {
+  if(symbol == 1){
+  const symbols = '!@#$%^&*(){}[]=+/?<>'
+  return symbols[Math.floor(Math.random()*symbols.length)];
+  }
+}
+
+for (let i=0; i<length; i++){
+const rUpper = getRandomUpper();
+const rLower = getRandomLower();
+const rNumber = getRandomNumber();
+const rSymbol = getRandomSymbol();
+const passwordArr = [{rUpper},{rLower},{rNumber},{rSymbol}].filter(item=>Object.values(item)[0]);
+
+console.log (passwordArr);
+}
  };
 
 //generating final password
