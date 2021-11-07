@@ -76,38 +76,25 @@ function getRandomSymbol() {
   return symbols[Math.floor(Math.random()*symbols.length)];
   }
 }
+var passwordArr = [];
 
 for (let i=0; i<length; i++){
 const rUpper = getRandomUpper();
 const rLower = getRandomLower();
 const rNumber = getRandomNumber();
 const rSymbol = getRandomSymbol();
-const passwordArr = [{rUpper},{rLower},{rNumber},{rSymbol}].filter(item=>Object.values(item)[0]);
-
-console.log (passwordArr);
+passwordArr.push(rUpper,rLower,rNumber,rSymbol);
+if (passwordArr.length>=length){
+  break;
 }
- };
+//const passwordArr = [{rUpper},{rLower},{rNumber},{rSymbol}];
 
-//generating final password
-/*function generatingPassword(rlower,rupper,rnumber,rsymbol,length){
-  let finalpassword = '';
-  const typesCount = lower + upper+ number+symbol;
-  const typesArr=[{rlower},{rupper},{rnumber},{rsymbol}].filter(item=>Object.values(item)[0]);
-
-  if(typesCount===0){
-    return '';
-  }
-  for(let i=0; i<length; i+=typesCount) {
-    typesArr.forEach(type => {
-      const FuncName=Object.keys(type)[0];
-      finalpassword+=randomFunc[funcName]();
-    });
-  }
-  const password=finalpassword.slice(0,length);
-  return password;
 }
-console.log (password);
- };*/
+const password = passwordArr;
+return password;
+};
+
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -115,10 +102,10 @@ var generateBtn = document.querySelector("#generate");
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
+  
   var passwordText = document.querySelector("#password");
-
   passwordText.value = password;
-
+  
 }
 
 // Add event listener to generate button
