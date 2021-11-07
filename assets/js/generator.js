@@ -1,16 +1,24 @@
 // Assignment code here
 function getRandomLower() {
+  if(lowercase == 1){
   return String.fromCharCode(Math.floor(Math.random()*26)+97);
+  }
 }
 function getRandomUpper() {
+  if(uppercase==1){
   return String.fromCharCode(Math.floor(Math.random()*26)+65);
+  }
 }
 function getRandomNumber() {
+  if(number==1) {
   return String.fromCharCode(Math.floor(Math.random()*10)+48);
+  }
 }
 function getRandomSymbol() {
+  if(symbol==1){
   const symbols = '!@#$%^&*(){}[]=+/?<>'
   return symbols[Math.floor(Math.random()*symbols.length)];
+  }
 }
 
 const randomFunc = {
@@ -68,9 +76,19 @@ else if (ssymbol==="N" || ssymbol=="n") {
 var symbol = 0;
 }
 
+//password generation
+
+
+const passwordArr = [{uppercase},{lowercase},{number},{symbol}].filter(item=>Object.values(item)[0]);
+
+while (i=passwordArr.lenght,i<=length) {
+  
+}
+console.log (final);
+ };
 
 //generating final password
-function generatingPassword(rlower,rupper,rnumber,rsymbol,length){
+/*function generatingPassword(rlower,rupper,rnumber,rsymbol,length){
   let finalpassword = '';
   const typesCount = lower + upper+ number+symbol;
   const typesArr=[{rlower},{rupper},{rnumber},{rsymbol}].filter(item=>Object.values(item)[0]);
@@ -88,7 +106,7 @@ function generatingPassword(rlower,rupper,rnumber,rsymbol,length){
   return password;
 }
 console.log (password);
- };
+ };*/
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
